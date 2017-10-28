@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico">
+    <title> </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href="css/tutorial.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid menu_sec">
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="index.php">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12 logo">
+            <a href="index.php"><img src="img/logo.png" class="img-responsive" /></a>
+        </div>
+        <div class=" menu col-md-9 col-sm-9 col-xs-12">
+            <li><a href="#" class=""><i class="fa fa-phone" aria-hidden="true"></i> +91 99999999999</a></li>
+            <li><a href="#" class=""><i class="fa fa-envelope-o" aria-hidden="true"></i> info@demo.com</a> </li>
+            <li><a href="javascript:;" data-toggle="modal" data-target="#loginModal"><i class="fa fa-lock" aria-hidden="true"></i> Login</a> </li>
+            <li class="menu_icon_mobile">
+                <a href="#" onclick="openNav()"><img src="img/menu-icon.png" class="img-responsive menu_icon" /></a>
+            </li>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- -Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content login-modal">
+                <div class="modal-header login-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="loginModalLabel">USER AUTHENTICATION</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div role="tabpanel" class="login-tab">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a id="signin-taba" href="#home" aria-controls="home" role="tab" data-toggle="tab">Sign In</a></li>
+                                <li role="presentation"><a id="signup-taba" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li>
+                                <li role="presentation"><a id="forgetpass-taba" href="#forget_password" aria-controls="forget_password" role="tab" data-toggle="tab">Forget Password</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active text-center" id="home">
+                                    &nbsp;&nbsp;
+                                    <span id="login_fail" class="response_error" style="display: none;">Loggin failed, please try again.</span>
+                                    <div class="clearfix"></div>
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                <input type="text" class="form-control" id="login_username" placeholder="Username">
+                                            </div>
+                                            <span class="help-block has-error" id="email-error"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                            </div>
+                                            <span class="help-block has-error" id="password-error"></span>
+                                        </div>
+                                        <button type="button" id="login_btn" class="btn btn-block bt-login" data-loading-text="Signing In....">Login</button>
+                                        <div class="clearfix"></div>
+                                        <div class="login-modal-footer">
+                                            <div class="row">
+                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                    <i class="fa fa-lock"></i>
+                                                    <a href="javascript:;" class="forgetpass-tab"> Forgot password? </a>
+
+                                                </div>
+
+                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                    <i class="fa fa-check"></i>
+                                                    <a href="javascript:;" class="signup-tab"> Sign Up </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile">
+                                    &nbsp;&nbsp;
+                                    <span id="registration_fail" class="response_error" style="display: none;">Registration failed, please try again.</span>
+                                    <div class="clearfix"></div>
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                <input type="text" class="form-control" id="username" placeholder="Username">
+                                            </div>
+                                            <span class="help-block has-error" data-error='0' id="username-error"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-at"></i></div>
+                                                <input type="text" class="form-control" id="remail" placeholder="Email">
+                                            </div>
+                                            <span class="help-block has-error" data-error='0' id="remail-error"></span>
+                                        </div>
+                                        <button type="button" id="register_btn" class="btn btn-block bt-login" data-loading-text="Registering....">Register</button>
+                                        <div class="clearfix"></div>
+                                        <div class="login-modal-footer">
+                                            <div class="row">
+                                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                                    <i class="fa fa-lock"></i>
+                                                    <a href="javascript:;" class="forgetpass-tab"> Forgot password? </a>
+
+                                                </div>
+
+                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                    <i class="fa fa-check"></i>
+                                                    <a href="javascript:;" class="signin-tab"> Sign In </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div role="tabpanel" class="tab-pane text-center" id="forget_password">
+                                    &nbsp;&nbsp;
+                                    <span id="reset_fail" class="response_error" style="display: none;"></span>
+                                    <div class="clearfix"></div>
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                <input type="text" class="form-control" id="femail" placeholder="Email">
+                                            </div>
+                                            <span class="help-block has-error" data-error='0' id="femail-error"></span>
+                                        </div>
+
+                                        <button type="button" id="reset_btn" class="btn btn-block bt-login" data-loading-text="Please wait....">Forget Password</button>
+                                        <div class="clearfix"></div>
+                                        <div class="login-modal-footer">
+                                            <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <i class="fa fa-lock"></i>
+                                                    <a href="javascript:;" class="signin-tab"> Sign In </a>
+
+                                                </div>
+
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                    <i class="fa fa-check"></i>
+                                                    <a href="javascript:;" class="signup-tab"> Sign Up </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- - Login Model Ends Here -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="container-fluid banner_sec ">
+
+
+
+        <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+                <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper For Slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Third Slide -->
+                <div class="item active">
+
+                    <!-- Slide Background -->
+                    <img src="img/slide1.jpg" alt="Bootstrap Touch Slider" class="slide-image" />
+                    <div class="bs-slider-overlay"></div>
+
+                    <div class="container">
+                        <div class="row">
+                            <!-- Slide Text Layer -->
+                            <div class="slide-text slide_style_center">
+                                <h1 data-animation="animated flipInX">Change Your Life. Start Here.</h1>
+                                <p data-animation="animated lightSpeedIn">Your chance to be a trending expert in IT industries and make a successful<br> career after completion of our experts.</p>
+                                <a href="#" class="btn btn-demo" data-animation="animated fadeInDown">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+                <!-- Second Slide -->
+                <div class="item">
+
+                    <!-- Slide Background -->
+                    <img src="img/slide2.jpg" alt="Bootstrap Touch Slider" class="slide-image" />
+                    <div class="bs-slider-overlay"></div>
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_center">
+                        <h1 data-animation="animated flipInX">Education for an Inspired Life </h1>
+                        <p data-animation="animated lightSpeedIn">Your chance to be a trending expert in IT industries and make a successful<br> career after completion of our experts.</p>
+                        <a href="#" class="btn btn-demo" data-animation="animated fadeInDown">Read More</a>
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+                <!-- Third Slide -->
+                <div class="item">
+
+                    <!-- Slide Background -->
+                    <img src="img/slide3.jpg" alt="Bootstrap Touch Slider" class="slide-image" />
+                    <div class="bs-slider-overlay"></div>
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_center">
+                        <h1 data-animation="animated flipInX">Real Education. Real Results. </h1>
+                        <p data-animation="animated lightSpeedIn">Your chance to be a trending expert in IT industries and make a successful<br> career after completion of our experts.</p>
+                        <a href="#" class="btn btn-demo" data-animation="animated fadeInDown">Read More</a>
+                    </div>
+                </div>
+                <!-- End of Slide -->
+
+
+            </div>
+            <!-- End of Wrapper For Slides -->
+
+            <!-- Left Control -->
+            <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <!-- Right Control -->
+            <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+                <span class="fa fa-angle-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+        <!-- End  bootstrap-touch-slider Slider -->
+
+
+
+    </div>
+
+
+    <div class="about_channel_sec container">
+        <h2>About Us</h2>
+
+
+        <div class="col-md-6 col-sm-6 abt_channel">
+            <h4>The development of the scientific</h4>
+            <p>The development of the scientific method has made a significant contribution to how knowledge of the physical world and its phenomena is acquired.To be termed scientific, a method of inquiry must be based on gathering observable and measurable evidence subject to specific principles of reasoning and experimentation.The scientific method consists of the collection of data through observation and experimentation, and the formulation and testing of hypotheses.Science, and the nature of scientific knowledge have also become the subject of Philosophy a method of inquiry must be based on gathering observable and measurable evidence subject to</p>
+
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <video width="100%" controls>
+  <source src="education.webm" type="video/mp4">
+  <source src="education.webmwebm" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+
+        </div>
+
+    </div>
+
+
+
+    <section class="footer">
+        <div class="container-fluid footer_sec">
+            <div class="col-md-3 col-sm-3 footer1">
+                <a href="index.php"><img src="img/logo.png" class="img-responsive" /></a>
+                <p>The development of the scientific method has made a significant contribution to how knowledge of the physical world and its phenomena is acquired.To be termed scientific, a method of inquiry must be based on gathering observable and measurable</p>
+            </div>
+
+            <div class="col-md-3 col-sm-3 footer2">
+                <h3>Location Us</h3>
+                <p>The development of the scientific method has made a significant contribution to how knowledge of th</p>
+                <h3>Follow Us on</h3>
+                <ul class="social-network social-circle">
+                    <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-6 col-sm-6 form_sec">
+                <h3>Request a Call Back</h3>
+                <div class="col-md-6"><input type="text" class="form-control form-group" placeholder="First Name" /></div>
+                <div class="col-md-6"><input type="text" class="form-control form-group" placeholder="Last Name" /></div>
+                <div class="col-md-6"><input type="text" class="form-control form-group" placeholder="Email ID" /></div>
+                <div class="col-md-6"><input type="text" class="form-control form-group" placeholder="Phone Number" /></div>
+                <div class="col-md-12"><textarea type="text" class="form-control form-group" placeholder="Leave a Message"></textarea></div>
+                <div class="col-md-12"><a href="#" class="btn btn-submit">Submit</a></div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slider.js"></script>
+<script src="https://use.fontawesome.com/7f87e71bbe.js"></script>
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.signup-tab', function(e) {
+            e.preventDefault();
+            $('#signup-taba').tab('show');
+        });
+
+        $(document).on('click', '.signin-tab', function(e) {
+            e.preventDefault();
+            $('#signin-taba').tab('show');
+        });
+
+        $(document).on('click', '.forgetpass-tab', function(e) {
+            e.preventDefault();
+            $('#forgetpass-taba').tab('show');
+        });
+    });
+
+</script>
+</body>
+<script>
+    function openNav() {
+        document.getElementById("myNav").style.height = "100%";
+    }
+
+    function closeNav() {
+        document.getElementById("myNav").style.height = "0%";
+    }
+
+</script>
